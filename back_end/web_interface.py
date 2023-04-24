@@ -1,11 +1,14 @@
 from flask import Flask, abort, request, render_template
 from gevent import pywsgi
-
+from flask_cors import CORS
 from back_end.connection_graph import graph_data_create
 from back_end.mail_process import mail_process_use_path, mail_process_use_account, login
 
 app = Flask(__name__)
 app.config['JSON_AS_ASCII'] = False
+
+
+CORS(app, supports_credentials=True)
 
 
 @app.route("/")
@@ -53,7 +56,7 @@ def use_path():
 
 
 def render(mail_extrace: list):
-    return {"mail_extrace":mail_extrace, "graph_data": graph_data_create(mail_extrace)}
+    return {"mail_extrace": mail_extrace, "graph_data": graph_data_create(mail_extrace)}
 
 
 if __name__ == '__main__':
