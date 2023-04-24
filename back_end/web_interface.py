@@ -53,8 +53,7 @@ def use_path():
 
 
 def render(mail_extrace: list):
-    data = mail_extrace, graph_data_create(mail_extrace)
-    return render_template('./XXX.html', data=data)
+    return {"mail_extrace":mail_extrace, "graph_data": graph_data_create(mail_extrace)}
 
 
 if __name__ == '__main__':
