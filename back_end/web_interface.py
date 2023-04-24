@@ -6,8 +6,7 @@ from back_end.mail_process import mail_process_use_path, mail_process_use_accoun
 
 app = Flask(__name__)
 app.config['JSON_AS_ASCII'] = False
-
-
+CORS(app, resources=r'/*')
 CORS(app, supports_credentials=True)
 
 
